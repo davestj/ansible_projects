@@ -1,0 +1,4 @@
+---
+nginx_hostname: "devops-toolsmiths.com"
+web_path: "/var/www/html"
+

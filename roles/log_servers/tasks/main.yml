@@ -1,0 +1,12 @@
+---
+- name: Ensure syslog-ng is installed
+  package:
+    name: syslog-ng
+    state: present
+
+- name: Ensure syslog-ng service is enabled and running
+  service:
+    name: syslog-ng
+    state: started
+    enabled: yes
+
