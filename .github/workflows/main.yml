@@ -16,7 +16,7 @@ jobs:
       - name: Install Ansible
         run: |
           sudo apt update
-          sudo apt install -y ansible ansible-lint
+          sudo apt install -y ansible ansible-lint; sudo mkdir logs && sudo chmod 777 logs/;
 
       - name: Run Ansible Lint
         run: |
