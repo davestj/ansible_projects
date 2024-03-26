@@ -19,21 +19,15 @@ pipeline {
 
     post {
         always {
-            script {
-                slackSend(channel: env.SLACK_CHANNEL_ID, color: 'good', message: "Ansible lint check and playbook syntax test completed.")
-            }
+            echo "Ansible lint check and playbook syntax test completed."
         }
 
         success {
-            script {
-                slackSend(channel: env.SLACK_CHANNEL_ID, color: 'good', message: "Ansible lint check and playbook syntax test passed successfully.")
-            }
+            echo "Ansible lint check and playbook syntax test passed successfully."
         }
 
         failure {
-            script {
-                slackSend(channel: env.SLACK_CHANNEL_ID, color: 'danger', message: "Ansible lint check or playbook syntax test failed.")
-            }
+            echo "Ansible lint check or playbook syntax test failed."
         }
     }
 }
