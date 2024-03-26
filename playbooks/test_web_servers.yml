@@ -1,0 +1,7 @@
+---
+- name: Test Web Servers Role
+  hosts: web_servers
+  become: true
+  roles:
+    - roles/web_servers
+

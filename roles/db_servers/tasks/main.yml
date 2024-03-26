@@ -1,0 +1,12 @@
+---
+- name: Ensure MySQL is installed
+  package:
+    name: mysql-server
+    state: present
+
+- name: Ensure MySQL service is enabled and running
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+
