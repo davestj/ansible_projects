@@ -1,0 +1,31 @@
+# Ansible
+*.retry
+
+# System
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# Editor
+*.sublime-project
+*.sublime-workspace
+
+# Ansible Vault
+vault.yml
+
+# Logs
+*.log
+logs/
+
+# Compiled Python files
+__pycache__/
+
+# Ansible roles dependencies
+roles/*/!(README.md)
+
+# Local development files
+.env
+
