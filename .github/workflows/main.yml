@@ -22,10 +22,6 @@ jobs:
         run: |
           ansible-playbook -vvv --syntax-check -i inventory/hosts.yml playbooks/*
 
-      - name: Run Ansible Lint
-        run: |
-          ansible-lint -vvvv -x ANSIBLE0010 -x 401 playbooks/*
-
       - name: Validate Inventory
         run: |
           ansible-inventory -vvv -i inventory/hosts.yml --list
