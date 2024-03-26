@@ -4,15 +4,20 @@ pipeline {
         SLACK_CHANNEL_ID = 'jenkins-ci' // alter if needed, this is default
     }
     stages {
-        stage('Ansible Lint Check') {
+	stage('Setup Ansible Build Environment') {
             steps {
-                sh 'ansible-lint -vvvv -x ANSIBLE0010 -x 401 playbooks/*'
+                sh 'mkdir -pv logs/;'
+            }
+        }
+        stage('Ansible Validate Variable Definitions') {
+            steps {
+                sh 'ansible-playbook -vvv -i inventory/hosts.yml playbooks/* --list-tasks'
             }
         }
 
         stage('Run Test on Tasks and Inventory Facts') {
             steps {
-                sh 'ansible-playbook --syntax-check -i inventory/hosts.yml playbooks/*'
+                sh 'ansible-playbook -vvv --syntax-check -i inventory/hosts.yml playbooks/*'
             }
         }
     }

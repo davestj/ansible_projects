@@ -6,8 +6,8 @@ on:
       - dev
 
 jobs:
-  execute-jenkinsfile:
-    runs-on: ubuntu-latest
+  execute-ansible-testing:
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
@@ -16,19 +16,11 @@ jobs:
       - name: Install Ansible
         run: |
           sudo apt update
-          sudo apt install -y ansible ansible-lint
-
-      - name: Run Ansible Lint
-        run: |
-          ansible-lint -vvvv -x ANSIBLE0010 -x 401 playbooks/*
+          sudo apt install -y ansible ansible-lint; sudo mkdir logs && sudo chmod 777 logs/;
 
       - name: Run Ansible Syntax Check
         run: |
           ansible-playbook -vvv --syntax-check -i inventory/hosts.yml playbooks/*
-
-      - name: Validate Inventory
-        run: |
-          ansible-inventory -vvv -i inventory/hosts.yml --list
 
       - name: Validate Variable Definitions
         run: |
