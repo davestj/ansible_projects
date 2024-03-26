@@ -4,6 +4,11 @@ pipeline {
         SLACK_CHANNEL_ID = 'jenkins-ci' // alter if needed, this is default
     }
     stages {
+	stage('Setup Ansible Build Environment') {
+            steps {
+                sh 'mkdir -pv logs/;'
+            }
+        }
         stage('Ansible Validate Variable Definitions') {
             steps {
                 sh 'ansible-playbook -vvv -i inventory/hosts.yml playbooks/* --list-tasks'
