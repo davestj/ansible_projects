@@ -6,8 +6,8 @@ on:
       - dev
 
 jobs:
-  execute-jenkinsfile:
-    runs-on: ubuntu-latest
+  execute-ansible-testing:
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
