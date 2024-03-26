@@ -1,0 +1,22 @@
+name: Execute Docker Jenkinsfile-runner image to test Jenkinsfiles
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  execute-jenkinsfile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Jenkinsfile
+        run: |
+          docker run --rm \
+            -v $(pwd):/workspace \
+            jenkins/jenkinsfile-runner \
+            --jenkinsfile /workspace/Jenkinsfile
+
